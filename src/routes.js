@@ -56,7 +56,7 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
 const User = React.lazy(() => import('./views/registredusers/users'))
 const EventCreaation = React.lazy(() => import('./views/events/eventcreation'))
-const EventList = React.lazy(() => import('./views/events/eventlist'))
+const EventList = React.lazy(() => import('./views/events/eventList'))
 const category = React.lazy(() => import('./views/category/category'))
 
 
