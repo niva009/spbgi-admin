@@ -93,22 +93,41 @@ const Login = () => {
                   </CForm>
                 </CCardBody>
               </CCard>
-              <CCard className="text-white bg-primary py-5" style={{ width: '44%' }}>
-                <CCardBody className="text-center">
-                  <div>
-                    <h2>Sign up</h2>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
-                    <Link to="/register">
-                      <CButton color="primary" className="mt-3" active tabIndex={-1}>
-                        Register Now!
-                      </CButton>
-                    </Link>
-                  </div>
-                </CCardBody>
-              </CCard>
+              <CCard
+  className="text-white bg-primary py-5 shadow-lg"
+  style={{
+    width: '44%',
+    borderRadius: '12px',
+    background: 'linear-gradient(135deg, #0062E6, #33AEFF)',
+  }}
+>
+  <CCardBody className="text-center">
+    <div>
+      <h2
+        style={{
+          marginTop: '30px',
+          fontSize: '1.8rem',
+          fontWeight: '700',
+          textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
+          letterSpacing: '0.5px',
+        }}
+      >
+        SPB & GI Cancer Summit 2025
+      </h2>
+      <p
+        style={{
+          fontSize: '1.1rem',
+          marginTop: '10px',
+          color: '#f8f9fa',
+          opacity: 0.9,
+        }}
+      >
+        Welcome to the Admin Dashboard
+      </p>
+    </div>
+  </CCardBody>
+</CCard>
+
             </CCardGroup>
           </CCol>
         </CRow>
