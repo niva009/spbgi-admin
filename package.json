@@ -3,20 +3,12 @@
   "version": "5.4.0",
   "description": "admin template for spb",
   "homepage": ".",
-  "bugs": {
-    "url": "https://github.com/coreui/coreui-free-react-admin-template/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:coreui/coreui-free-react-admin-template.git"
-  },
-  "license": "MIT",
-  "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint",
     "serve": "vite preview",
+    "vercel-build": "vite build",
     "start": "vite"
   },
   "dependencies": {
