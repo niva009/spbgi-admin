@@ -29,22 +29,6 @@ const _nav = [
   },
   {
     component: CNavTitle,
-    name: 'Account Settings',
-  },
-  {
-    component: CNavItem,
-    name: 'settings',
-    to: '/theme/colors',
-    icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
-  },
-  {
-    component: CNavItem,
-    name: 'edit profile',
-    to: '/theme/typography',
-    icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
-  },
-  {
-    component: CNavTitle,
     name: 'event tools',
   },
   {
@@ -232,41 +216,36 @@ const _nav = [
   },
   {
     component: CNavGroup,
-    name: 'Coupon code',
+    name: 'Event Time Sheet',
     icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
-        name: 'Alerts',
-        to: '/notifications/alerts',
+        name: 'create event time sheet',
+        to: '/eventtime',
       },
       {
         component: CNavItem,
-        name: 'Badges',
-        to: '/notifications/badges',
+        name: 'Event time list',
+        to: '/event-time-list',
       },
       {
         component: CNavItem,
-        name: 'Modal',
-        to: '/notifications/modals',
-      },
-      {
-        component: CNavItem,
-        name: 'Toasts',
-        to: '/notifications/toasts',
+        name: 'Event time update',
+        to: '/event-time-update/:id',
       },
     ],
   },
-  {
-    component: CNavItem,
-    name: 'help center',
-    to: '/widgets',
-    icon: <CIcon icon={cilCalculator} customClassName="nav-icon" />,
-    badge: {
-      color: 'info',
-      text: 'NEW',
-    },
-  },
+  // {
+  //   component: CNavItem,
+  //   name: 'help center',
+  //   to: '/widgets',
+  //   icon: <CIcon icon={cilCalculator} customClassName="nav-icon" />,
+  //   badge: {
+  //     color: 'info',
+  //     text: 'NEW',
+  //   },
+  // },
   {
     component: CNavTitle,
     name: 'Extras',

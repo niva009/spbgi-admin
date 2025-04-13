@@ -58,6 +58,9 @@ const User = React.lazy(() => import('./views/registredusers/users'))
 const EventCreaation = React.lazy(() => import('./views/events/eventcreation'))
 const EventList = React.lazy(() => import('./views/events/eventList'))
 const category = React.lazy(() => import('./views/category/category'))
+const CreateEventTime = React.lazy(() => import('./views/eventtime/createeventtime'))
+const EventTimeList = React.lazy(() => import('./views/eventtime/eventtimelist'))
+const EventTimeUpdate = React.lazy(() => import('./views/eventtime/eventtimeupdate'))
 
 
 
@@ -67,6 +70,9 @@ const routes = [
   { path: '/event-creation', name: 'Event Creation' , element: EventCreaation },  
   { path: '/event-list', name: 'Event List' , element: EventList }, 
   { path: '/category', name: 'Category' , element: category },
+  { path: '/eventtime', name: 'Event Time' , element: CreateEventTime },
+  { path :'/event-time-list', name: 'Event Time List' , element: EventTimeList },  
+  { path :'/event-time-update/:id', name: 'Event Time Update' , element: EventTimeUpdate },
 
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },
