@@ -150,6 +150,11 @@ const _nav = [
         name: 'manual order',
         to: '/manual-order',
       },
+      {
+        component: CNavItem,
+        name: 'order List',
+        to: '/order-list',
+      },
     ],
   },
   {
@@ -193,6 +198,18 @@ const _nav = [
         component: CNavItem,
         name: 'Event time update',
         to: '/event-time-update/:id',
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: 'manual order cration',
+    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'creat manual order',
+        to: '/manual-order',
       },
     ],
   },

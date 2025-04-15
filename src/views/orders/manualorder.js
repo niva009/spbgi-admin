@@ -19,6 +19,8 @@ const ManualOrderForm = () => {
     country: "",
     postal_code: "",
     phone: "",
+    instution: "",
+    position: "",
   });
 
   const [userId, setUserId] = useState(null);
@@ -97,6 +99,8 @@ const ManualOrderForm = () => {
           <input placeholder="Name" value={billingForm.name} onChange={(e) => setBillingForm({ ...billingForm, name: e.target.value })} className="w-full border p-2" />
           <input placeholder="Address" value={billingForm.address} onChange={(e) => setBillingForm({ ...billingForm, address: e.target.value })} className="w-full border p-2" />
           <input placeholder="State" value={billingForm.state} onChange={(e) => setBillingForm({ ...billingForm, state: e.target.value })} className="w-full border p-2" />
+          <input placeholder="position" value={billingForm.position} onChange={(e) => setBillingForm({ ...billingForm, position: e.target.value })} className="w-full border p-2" />
+          <input placeholder="instution" value={billingForm.instution} onChange={(e) => setBillingForm({ ...billingForm, instution: e.target.value })} className="w-full border p-2" />
           <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">Save & Next</button>
         </form>
       )}

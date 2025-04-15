@@ -62,6 +62,7 @@ const CreateEventTime = React.lazy(() => import('./views/eventtime/createeventti
 const EventTimeList = React.lazy(() => import('./views/eventtime/eventtimelist'))
 const EventTimeUpdate = React.lazy(() => import('./views/eventtime/eventtimeupdate'))
 const ManualOrder = React.lazy(() => import('./views/orders/manualorder'))
+const orderList = React.lazy(() => import('./views/orders/orderlist'))
 
 
 
@@ -75,6 +76,7 @@ const routes = [
   { path :'/event-time-list', name: 'Event Time List' , element: EventTimeList },  
   { path :'/event-time-update/:id', name: 'Event Time Update' , element: EventTimeUpdate },
   { path :'/manual-order', name: 'Manual Order' , element: ManualOrder },
+  { path :'/order-list', name: 'Order List' , element: orderList },
 
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },
