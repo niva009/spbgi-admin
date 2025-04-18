@@ -47,6 +47,11 @@ const _nav = [
         name: 'Event List',
         to: '/event-list',
       },
+      {
+        component: CNavItem,
+        name: 'Event Breakfast List',
+        to: '/event-beakfastlist',
+      },
       // {
       //   component: CNavItem,
       //   name: 'upcomming event',

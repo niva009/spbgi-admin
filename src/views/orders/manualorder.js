@@ -1,6 +1,21 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+
+
+const inputStyle = {
+  width: '100%',
+  padding: '14px',
+  margin: '12px 0',
+  borderRadius: '10px',
+  border: '1px solid #ccc',
+  backgroundColor: 'rgba(255,255,255,0.12)',
+  color: 'white',
+  fontSize: '15px',
+  outline: 'none',
+  transition: 'border 0.3s ease',
+};
+
 const ManualOrderForm = () => {
   const [step, setStep] = useState(1);
 
@@ -14,13 +29,15 @@ const ManualOrderForm = () => {
   const [billingForm, setBillingForm] = useState({
     name: "",
     address: "",
-    city: "",
     state: "",
     country: "",
-    postal_code: "",
-    phone: "",
     instution: "",
     position: "",
+    age:'',
+    sex:'',
+    member: '',
+    invitation: '',
+
   });
 
   const [userId, setUserId] = useState(null);
@@ -66,6 +83,7 @@ const ManualOrderForm = () => {
         user_id: userId,
         billingId,
         transaction_id: transactionId,
+
       });
       alert("Order created and email sent!");
       console.log("Order:", res.data.order);
@@ -88,19 +106,27 @@ const ManualOrderForm = () => {
           <input placeholder="Name" value={userForm.name} onChange={(e) => setUserForm({ ...userForm, name: e.target.value })} className="w-full border p-2" />
           <input placeholder="Email" value={userForm.email} onChange={(e) => setUserForm({ ...userForm, email: e.target.value })} className="w-full border p-2" />
           <input placeholder="Phone" value={userForm.phone} onChange={(e) => setUserForm({ ...userForm, phone: e.target.value })} className="w-full border p-2" />
-          <input placeholder="Password" type="password" value={userForm.password} onChange={(e) => setUserForm({ ...userForm, password: e.target.value })} className="w-full border p-2" />
           <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">Register & Next</button>
         </form>
       )}
 
-      {step === 2 && (
+{step === 2 && (
         <form onSubmit={handleBillingSubmit} className="space-y-3">
           <h3 className="text-xl font-medium mb-2">2️⃣ Billing Address</h3>
-          <input placeholder="Name" value={billingForm.name} onChange={(e) => setBillingForm({ ...billingForm, name: e.target.value })} className="w-full border p-2" />
-          <input placeholder="Address" value={billingForm.address} onChange={(e) => setBillingForm({ ...billingForm, address: e.target.value })} className="w-full border p-2" />
-          <input placeholder="State" value={billingForm.state} onChange={(e) => setBillingForm({ ...billingForm, state: e.target.value })} className="w-full border p-2" />
-          <input placeholder="position" value={billingForm.position} onChange={(e) => setBillingForm({ ...billingForm, position: e.target.value })} className="w-full border p-2" />
-          <input placeholder="instution" value={billingForm.instution} onChange={(e) => setBillingForm({ ...billingForm, instution: e.target.value })} className="w-full border p-2" />
+          <input style={inputStyle} placeholder="Name" value={billingForm.name} onChange={(e) => setBillingForm({ ...billingForm, name: e.target.value })} />
+          <input style={inputStyle} placeholder="Address" value={billingForm.address} onChange={(e) => setBillingForm({ ...billingForm, address: e.target.value })} />
+          <input style={inputStyle} placeholder="State" value={billingForm.state} onChange={(e) => setBillingForm({ ...billingForm, state: e.target.value })} />
+          <input style={inputStyle} placeholder="Institution" value={billingForm.instution} onChange={(e) => setBillingForm({ ...billingForm, instution: e.target.value })} />
+          <input style={inputStyle} placeholder="Position" value={billingForm.position} onChange={(e) => setBillingForm({ ...billingForm, position: e.target.value })} />
+          <input style={inputStyle}  type="number" placeholder="Age" value={billingForm.age} onChange={(e) => setBillingForm({ ...billingForm, age: e.target.value })} />
+          <select style={inputStyle} value={billingForm.sex} onChange={(e) => setBillingForm({ ...billingForm, sex: e.target.value })} required>
+            <option value="">Select Sex</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+          <input style={inputStyle} placeholder="Member" value={billingForm.member} onChange={(e) => setBillingForm({ ...billingForm, member: e.target.value })} />
+          <input style={inputStyle} placeholder="Invitation ?" value={billingForm.invitation} onChange={(e) => setBillingForm({ ...billingForm, invitation: e.target.value })} />
           <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">Save & Next</button>
         </form>
       )}

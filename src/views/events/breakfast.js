@@ -8,7 +8,7 @@ const BreakfastList = () => {
   useEffect(() => {
     const fetchRegistrations = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_URL}/breakfast/list`);
+        const response = await axios.get(`${import.meta.env.VITE_URL}/breakfast/view-registration`);
         setRegistrations(response.data.data);
       } catch (error) {
         console.error("Error fetching registrations:", error);
@@ -20,24 +20,30 @@ const BreakfastList = () => {
     fetchRegistrations();
   }, []);
 
-  const groupedByLegend = registrations.reduce((acc, curr) => {
-    const legend = curr.legend || "Unknown";
-    if (!acc[legend]) acc[legend] = [];
-    acc[legend].push(curr);
-    return acc;
-  }, {});
+  const groupByLegend = (data) => {
+    const grouped = {};
+    data.forEach((item) => {
+      const legend = item.legend || "Unknown Legend";
+      if (!grouped[legend]) {
+        grouped[legend] = [];
+      }
+      grouped[legend].push(item);
+    });
+    return grouped;
+  };
+
+  const groupedRegistrations = groupByLegend(registrations);
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-4">
       <h1 className="text-center mb-4">Breakfast Registrations</h1>
-
-      {Object.entries(groupedByLegend).map(([legend, users], index) => (
+      {Object.entries(groupedRegistrations).map(([legend, users], index) => (
         <div key={index} className="mb-5 p-3 border rounded shadow-sm">
-          <h3 className="text-primary mb-3">{legend}</h3>
+          <h4 className="text-primary mb-3">{legend}</h4>
           <table className="table table-striped">
             <thead>
               <tr>
@@ -59,7 +65,7 @@ const BreakfastList = () => {
                   <td>{user.registrationId}</td>
                   <td>
                     {new Date(user.createdAt).toLocaleString("en-IN", {
-                      day: "numeric",
+                      day: "2-digit",
                       month: "short",
                       year: "numeric",
                       hour: "2-digit",
