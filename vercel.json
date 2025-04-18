@@ -1,8 +1,8 @@
 {
     "rewrites": [
       {
-        "source": "/((?!static|favicon.ico|manifest.json|logo192.png|logo512.png).*)",
-        "destination": "/"
+        "source": "/((?!assets|manifest.json|favicon.ico|robots.txt).*)",
+        "destination": "/index.html"
       }
     ]
   }
