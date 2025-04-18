@@ -64,6 +64,7 @@ const EventTimeUpdate = React.lazy(() => import('./views/eventtime/eventtimeupda
 const ManualOrder = React.lazy(() => import('./views/orders/manualorder'))
 const orderList = React.lazy(() => import('./views/orders/orderlist'))
 const BreakfastList = React.lazy(() => import('./views/events/breakfast'))
+const Orders = React.lazy(() => import('./views/orders/orders'))
 
 
 
@@ -79,6 +80,7 @@ const routes = [
   { path :'/manual-order', name: 'Manual Order' , element: ManualOrder },
   { path :'/order-list', name: 'Order List' , element: orderList },
   { path :'/event-beakfastlist', name: 'Order List' , element: BreakfastList },
+  { path :'/orders/:id', name: 'Order single' , element: Orders },
 
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },

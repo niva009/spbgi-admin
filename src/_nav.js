@@ -206,18 +206,7 @@ const _nav = [
       },
     ],
   },
-  {
-    component: CNavGroup,
-    name: 'manual order cration',
-    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: 'creat manual order',
-        to: '/manual-order',
-      },
-    ],
-  },
+
   // {
   //   component: CNavItem,
   //   name: 'help center',
