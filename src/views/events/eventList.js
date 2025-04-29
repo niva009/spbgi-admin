@@ -8,7 +8,7 @@ const BreakfastList = () => {
   useEffect(() => {
     const fetchRegistrations = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_URL}/breakfast/list`);
+        const response = await axios.get(`${import.meta.env.VITE_URL}/showallevents`);
         setRegistrations(response.data.data);
       } catch (error) {
         console.error("Error fetching registrations:", error);
@@ -33,19 +33,18 @@ const BreakfastList = () => {
 
   return (
     <div className="container mt-5">
-      <h1 className="text-center mb-4">Breakfast Registrations</h1>
+      <h1 className="text-center mb-4">Event List</h1>
 
       {Object.entries(groupedByLegend).map(([legend, users], index) => (
         <div key={index} className="mb-5 p-3 border rounded shadow-sm">
-          <h3 className="text-primary mb-3">{legend}</h3>
           <table className="table table-striped">
             <thead>
               <tr>
                 <th>No</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Registration ID</th>
+                <th>Title</th>
+                <th>Location</th>
+                <th>Ticket Price</th>
+                <th>categoryname</th>
                 <th>Registered At</th>
               </tr>
             </thead>
@@ -53,12 +52,12 @@ const BreakfastList = () => {
               {users.map((user, idx) => (
                 <tr key={user._id}>
                   <td>{idx + 1}</td>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>{user.phonenumber}</td>
-                  <td>{user.registrationId}</td>
+                  <td>{user.title}</td>
+                  <td>{user.location?.venue_name}</td>
+                  <td>{user.tickets?.sale_price}</td>
+                  <td>{user.category}</td>
                   <td>
-                    {new Date(user.createdAt).toLocaleString("en-IN", {
+                    {new Date(user.end_date).toLocaleString("en-IN", {
                       day: "numeric",
                       month: "short",
                       year: "numeric",

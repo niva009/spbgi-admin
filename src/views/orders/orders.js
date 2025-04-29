@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+
 const OrderDetails = () => {
   const { id } = useParams();
   const [order, setOrder] = useState(null);
@@ -18,6 +19,34 @@ const OrderDetails = () => {
 
     if (id) fetchOrder();
   }, [id]);
+
+  const markAttendance = async (order) => {
+    const token = localStorage.getItem("token");
+  
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_URL}/mark-attandance`,
+        {
+          name: order.user_id?.name,
+          registration_id: order?.registration_id,
+        },
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        } 
+      );
+  
+      console.log("Attendance marked successfully", res.data);
+      alert("Attendance marked successfully!");
+    } catch (error) {
+      console.error("Error marking attendance:", error);
+      alert("Error marking attendance!");
+    }
+  };
+  
+  
+
 
   if (!order) {
     return (
@@ -54,7 +83,7 @@ const OrderDetails = () => {
         {/* Mark Attendance Button */}
         <div style={{ marginTop: '32px', display: 'flex', justifyContent: 'center' }}>
   <button
-    onClick={() => alert("Attendance Marked")}
+    onClick={() => markAttendance(order)}
     style={{
       padding: '12px 24px',
       backgroundColor: '#4F46E5', // Indigo color

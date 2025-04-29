@@ -123,7 +123,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'attandees list',
-        to: '/#',
+        to: '/attandance-list ',
       },
       {
         component: CNavItem,
