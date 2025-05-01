@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import PropTypes from 'prop-types'
+import PropTypes, { func } from 'prop-types'
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -42,6 +42,7 @@ const WidgetsDropdown = (props) => {
   const [user,setUsers] = useState([]);
   const [orders, setOrders] = useState([]);
   const [registrations, setRegistrations] = useState([]);
+  const[attandace, setAttandace] = useState([]);
 
 
 
@@ -54,6 +55,9 @@ const WidgetsDropdown = (props) => {
 
   function BreakFast(){
     navigate('/event-beakfastlist')
+  }
+  function Attandance(){
+    navigate('/attandance-list')
   }
 
   useEffect(() => {
@@ -86,6 +90,7 @@ const WidgetsDropdown = (props) => {
 
     fetchUsers();
 }, []);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -104,6 +109,26 @@ const WidgetsDropdown = (props) => {
 
     fetchOrders();
   }, []);
+
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+    try {
+        const response = await axios.get(`${import.meta.env.VITE_URL}/view-marked-attandaace`);
+        console.log("response", response);
+        setAttandace(response?.data?.data);
+    } catch (error) {
+        console.error("Error fetching users:", error);
+    } finally {
+        setLoading(false);
+    }
+    };
+
+    fetchUsers();
+}, []);
+
+
+
 
 
   return (
@@ -151,13 +176,13 @@ const WidgetsDropdown = (props) => {
         </div>
       </CCol>
       <CCol sm={6} xl={4} xxl={3}>
-      <div onClick={OrderClick} style={{ cursor: "pointer" }}>
+      <div onClick={Attandance} style={{ cursor: "pointer" }}>
         <CWidgetStatsA
           color="danger"
           style={{ padding: "40px 0px" }}
           value={
             <>
-              44K{' '}
+              {attandace.length}{' '}
             </>
           }
           title="Attandee List"

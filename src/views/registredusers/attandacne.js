@@ -48,7 +48,7 @@ const Attandance = () => {
                     <td>{index+1}</td>
                     <td>{user.name}</td>
                     <td>{user.registration_id}</td>
-                    <td>{user.marked_user}</td>
+                    <td>{user.marked_user?.name || "" }</td>
                     </tr>
                 ))}
                 </tbody>
