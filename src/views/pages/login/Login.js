@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import {
   CButton,
   CCard,
@@ -17,6 +17,8 @@ import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
 import axios from 'axios'
 
+import { toast } from "react-toastify"
+
 const Login = () => {
 
   const handleChange = (event) => {
@@ -28,6 +30,8 @@ const Login = () => {
     password: ''
   });
 
+  const[error, setError] = useState("");
+
   console.log(".env", import.meta.env.VITE_URL);
 
   const handleSubmit = async (event) => { 
@@ -38,12 +42,15 @@ const Login = () => {
         localStorage.setItem('token', response?.data?.token);
 
         if(response?.data?.token){
+          toast.success("login success!");
           window.location.href = '/';
         }
 
  
     }catch (error) {
       console.error('Login failed:', error);
+      toast.error(error?.response?.data?.message)
+      setError(error?.response?.data?.message);
       // Handle login error here
     }
   }
@@ -112,7 +119,7 @@ const Login = () => {
           letterSpacing: '0.5px',
         }}
       >
-        SPB & GI Cancer Summit 2025
+        HPB & GI Cancer Surgery Summit 2025
       </h2>
       <p
         style={{

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { toast } from 'react-toastify';
 
 
 const OrderDetails = () => {
@@ -38,9 +39,10 @@ const OrderDetails = () => {
       );
   
       console.log("Attendance marked successfully", res.data);
-      alert("Attendance marked successfully!");
+      toast.success("attandance marked successfully!");
     } catch (error) {
       console.error("Error marking attendance:", error);
+      toast.error('Something went wrong!');
       alert("Error marking attendance!");
     }
   };

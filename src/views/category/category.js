@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const CategoryForm = () => {
   const [formData, setFormData] = useState({
@@ -47,7 +48,7 @@ const CategoryForm = () => {
         }
 
       );
-      setSuccess("Category added successfully!");
+      toast.success("category addedd success");
       setFormData({ name: "", metaTitle: "", metadescription: "" });
       fetchCategories();
     } catch (err) {

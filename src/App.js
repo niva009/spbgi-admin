@@ -7,6 +7,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import { CSpinner, useColorModes } from '@coreui/react'
 import './scss/style.scss'
 import './scss/examples.scss'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Containers
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
@@ -44,6 +46,17 @@ const App = () => {
           </div>
         }
       >
+
+<ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
         <Routes>
           <Route path="/login" name="Login Page" element={<Login />} />
           <Route path="/register" name="Register Page" element={<Register />} />
@@ -58,6 +71,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+      
         </Routes>
       </Suspense>
     </Router>

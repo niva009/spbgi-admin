@@ -16,6 +16,7 @@ const orderList = React.lazy(() => import('./views/orders/orderlist'))
 const BreakfastList = React.lazy(() => import('./views/events/breakfast'))
 const Orders = React.lazy(() => import('./views/orders/orders'))
 const Attandance = React.lazy(() => import('./views/registredusers/attandacne'))
+const RoleAssignment = React.lazy(() => import('./views/registredusers/rolemanagement'))
 
 
 
@@ -33,6 +34,7 @@ const routes = [
   { path :'/event-beakfastlist', name: 'Order List' , element: BreakfastList },
   { path :'/orders/:id', name: 'Order single' , element: Orders },
   { path :'/attandance-list', name: 'Order single' , element: Attandance },
+  { path :'/role-user', name: 'role assignment' , element: RoleAssignment },
 ]
 
 export default routes
