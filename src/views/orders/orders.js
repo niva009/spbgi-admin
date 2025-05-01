@@ -12,7 +12,7 @@ const OrderDetails = () => {
     const fetchOrder = async () => {
       try {
         const res = await axios.get(`${import.meta.env.VITE_URL}/order/${id}`);
-        setOrder(res.data.data);
+        setOrder(res.data?.data);
       } catch (err) {
         console.error("Error fetching order:", err);
       }

@@ -16,6 +16,8 @@ import {
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
 import axios from 'axios'
+import { jwtDecode } from "jwt-decode";
+
 
 import { toast } from "react-toastify"
 
@@ -38,22 +40,28 @@ const Login = () => {
     try {
       event.preventDefault();
       const response = await axios.post(`${import.meta.env.VITE_URL}/login`, credentials);
-      console.log(response.data?.token);
-        localStorage.setItem('token', response?.data?.token);
-
-        if(response?.data?.token){
-          toast.success("login success!");
-          window.location.href = '/';
+  
+      const token = response?.data?.token;
+      if (token) {
+        localStorage.setItem('token', token);
+  
+        const decoded = jwtDecode(token);
+        const userRole = decoded?.role;
+  
+        if (userRole) {
+          localStorage.setItem('role', userRole);
         }
-
- 
-    }catch (error) {
+  
+        toast.success("Login success!");
+        window.location.href = '/';
+      }
+  
+    } catch (error) {
       console.error('Login failed:', error);
-      toast.error(error?.response?.data?.message)
+      toast.error(error?.response?.data?.message);
       setError(error?.response?.data?.message);
-      // Handle login error here
     }
-  }
+  };
 
   console.log("token", localStorage.getItem('token'));
   return (
