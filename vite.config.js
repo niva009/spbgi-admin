@@ -4,7 +4,7 @@
   import autoprefixer from 'autoprefixer';
 
   export default defineConfig({
-    base: './',
+    base: '/',
     build: {
       outDir: 'dist', // ✅ updated from 'build'
     },
